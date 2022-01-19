@@ -1,13 +1,10 @@
 
 const express = require('express');
 var fs = require('fs');
-//const path = require('path');
-//const request = require('request');
-//const router = express.Router();
-
 const port = 3000;
 const app = express();
 
+// load dataset
 var questions = JSON.parse(fs.readFileSync('./quizzes.json', 'utf8'));
 
 app.use(express.static('static'));
@@ -30,9 +27,7 @@ app.post('/check/:id/:answer', function (req, res) {
     let my_id = req.params.id
     let my_answer = req.params.answer
     let correct_answer = questions[my_id]['correct']
-
     //console.log(my_answer,correct_answer)
-
     if (correct_answer == my_answer) {
         res.json(true);
     }

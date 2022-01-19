@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erma0x/quizapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/erma0x/quizapp/issues"
+  },
+  "homepage": "https://github.com/erma0x/quizapp#readme"
 }

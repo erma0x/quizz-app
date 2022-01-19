@@ -32,8 +32,10 @@ return true or false if the response it's correct
 <br>
 
 ### To do
-- da una a piu domande assieme
-    descrizione: spawna tot domande e puoi rispondere a tutte e solo dopo guardi se sono corrette o meno, con la % di corrette su /home
+
+1. da una a piu domande assieme descrizione: spawna tot domande e puoi rispondere a tutte e solo dopo guardi se sono corrette o meno, con la % di corrette su /home
+
+    1.1 da
 
     - cambia il pulsante per ottenere un quiz a test
         (da singolo a gruppo di domande)
@@ -49,6 +51,7 @@ return true or false if the response it's correct
     creare l'elemento
     mettere il contenuto 
     appenderlo
+
 <br>
 
 

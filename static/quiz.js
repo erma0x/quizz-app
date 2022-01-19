@@ -5,7 +5,7 @@ async function updateQuiz(req, res) {
   const data = await response.json();
 
   let htmlString = "";    // init form
-  htmlString += "<form method='post' id='form' class='mx-auto' style='width: 200px'>" + data['question'];
+  htmlString += "<form method='post' id='form' class='mx-auto' style='width: 700px'>" + data['question'];
   htmlString += "<br><br><button type='submit' class='btn btn-warning'> Submit </button> <br><br>";
 
   // compile form with radio-buttons and answers
