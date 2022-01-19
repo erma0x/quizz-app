@@ -1,7 +1,9 @@
 # QuizzApp: 
 Quiz game app with JavaScript, Bootstrap, nodejs & expressJS
+
 <br>
-### Build
+
+## Build
 ```bash
 npm install -g @vue cli
 vue create my-project
@@ -16,33 +18,40 @@ node server.js
 ```
 <br>
 
-### Endpoints
+## Endpoints
 
-##### /home
-localhost:3000/home index.html
+#### 🟢 **/home**
+localhost:3000/home my app rendering index.html
 
-##### /quiz
-get random quiz with json
+#### 🟢 **/quiz**
+get random quiz as json obj
 
-##### /check/:id
-send true or false if the response it's correct with res.json
+#### 🟢 **/check/:id/:myanswer**
+return true or false if the response it's correct
 
-<br><br>
-
-
+<br>
 
 ### To do
-- attributo nascosto nella form
-- 1 fai submit fetch id della domanda e fai /check/:id ed estrai la risposta, e pubblica con insertHTML su index.html 
-- visualizza se il risultato e' corretto
 
-
-<br><br>
-<br><br>
-<br><br>
+1. submit -> /verify2  - >  routing expressjs
+2. oppure passare dei parametri nella submit
+form-data lato client da guardare, estrapola dati da form
+3. piu domande come variabile lato server,
+spawna tot domande e puoi rispondere a tutte e solo dopo
+guardi se sono corrette o meno, con la % di corrette su /home
+4. document.CreateElement()
+innerHtml con append child
+creare l'elemento
+mettere il contenuto 
+appenderlo
+<br>
 
 
 ### Done 
+- aggiungi id come attributo nascosto nella form
+- togli correct come attributo nascosto nella form
+- 1 fai submit fetch id della domanda e fai /check/:id ed estrai la risposta, e pubblica con insertHTML su index.html 
+- visualizza se il risultato e' corretto su /home
 - value /verify/:id risposta corretta (True/False) 
 - valuta se sono uguali e ritorna un json
 - controlla la id della risposta e la risposta
@@ -58,25 +67,8 @@ send true or false if the response it's correct with res.json
 
 <br>
 
-
-
-<br><br>
-
 ## Note
-1. submit -> /verify2  - >  routing expressjs
 
-2. oppure passare dei parametri nella submit
-form-data lato client da guardare, estrapola dati da form
-
-3. piu domande come variabile lato server,
-spawna tot domande e puoi rispondere a tutte e solo dopo
-guardi se sono corrette o meno, con la % di corrette su /home
-
-4. document.CreateElement()
-innerHtml con append child
-creare l'elemento
-mettere il contenuto 
-appenderlo
 
 
 
