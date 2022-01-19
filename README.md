@@ -1,4 +1,4 @@
-# QuizzApp
+# QuizzApp: 
 Quiz game app with JavaScript, Bootstrap, nodejs & expressJS
 
 <br>
@@ -67,7 +67,7 @@ appenderlo
 
 <br>
 
-## Note
+### Notes
 
 
 
