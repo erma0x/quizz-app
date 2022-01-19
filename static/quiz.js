@@ -35,9 +35,8 @@ async function submitAnswer(event) {
 
   const isCorrect = await fetch(url, { method: 'POST' })
     .then(res => res.text())
-  //.then(isCorrect => console.log(typeof isCorrect));
-  //.then(isCorrect => console.log(isCorrect));
-
+    //.then(isCorrect => console.log(typeof isCorrect));
+    //.then(isCorrect => console.log(isCorrect));
   var htmlString = "";
   if (isCorrect == "true") {
     document.getElementById('container').innerHTML = htmlString + 'CORRECT ANSWER';
