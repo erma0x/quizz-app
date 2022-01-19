@@ -32,18 +32,23 @@ return true or false if the response it's correct
 <br>
 
 ### To do
+- da una a piu domande assieme
+    descrizione: spawna tot domande e puoi rispondere a tutte e solo dopo guardi se sono corrette o meno, con la % di corrette su /home
 
-1. submit -> /verify2  - >  routing expressjs
-2. oppure passare dei parametri nella submit
-form-data lato client da guardare, estrapola dati da form
-3. piu domande come variabile lato server,
-spawna tot domande e puoi rispondere a tutte e solo dopo
-guardi se sono corrette o meno, con la % di corrette su /home
-4. document.CreateElement()
-innerHtml con append child
-creare l'elemento
-mettere il contenuto 
-appenderlo
+    - cambia il pulsante per ottenere un quiz a test
+        (da singolo a gruppo di domande)
+
+    - fai un tot di domande per ogni test
+
+    - per ogni domanda fai un contatore di tutte le risposte giuste
+
+    - fai random quiz, però non prendere doppioni, quindi controlla la id della domanda pescata e fai una lista di id di domande presenti 
+
+    - document.CreateElement()
+    innerHtml con append child
+    creare l'elemento
+    mettere il contenuto 
+    appenderlo
 <br>
 
 
