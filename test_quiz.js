@@ -64,12 +64,13 @@ while (number_of_quizzes > my_test.length) {
             'answers': questions[randomKey]['answers'],
             'question': questions[randomKey]['question']
         }
+
         my_test.push(question);
         used_ids.push(randomKey);
 
-        console.log(question['question'])
-        for (answer_number in question['answers']){
-            console.log(question['answers'][answer_number])
+        console.log(question['question']);
+        for (answer_number in question['answers']) {
+            console.log(question['answers'][answer_number]);
         }
     }
 }
@@ -77,26 +78,26 @@ while (number_of_quizzes > my_test.length) {
 
         //console.log(randomKey)
 
-       // for (n in ) {
+// for (n in ) {
 
-            //     quizQuestion = document.createElement('li'); // single quiz question paragraph
-            //     form.appendChild(quizQuestion);
+    //     quizQuestion = document.createElement('li'); // single quiz question paragraph
+    //     form.appendChild(quizQuestion);
 
-            //     ratio_buttons = document.createElement('input'); // radio buttons answer
-            //     form.appendChild(ratio_buttons);
+    //     ratio_buttons = document.createElement('input'); // radio buttons answer
+    //     form.appendChild(ratio_buttons);
 
-            //     console.log(data[i]);
-            //     ratio_buttons.setAttribute('type', 'radio');
-            //     ratio_buttons.setAttribute('name', 'answer');
-            //     ratio_buttons.setAttribute('value', quizAnswers[n]);
-            //     ratio_buttons.setAttribute('id', quizAnswers[n]);
+    //     console.log(data[i]);
+    //     ratio_buttons.setAttribute('type', 'radio');
+    //     ratio_buttons.setAttribute('name', 'answer');
+    //     ratio_buttons.setAttribute('value', quizAnswers[n]);
+    //     ratio_buttons.setAttribute('id', quizAnswers[n]);
 
-            //     answerText = document.createElement('p');
-            //     form.appendChild(answerText);
-            //     ratio_buttons.setAttribute('id', quizAnswers[i]['id']);
-            //     ratio_buttons.setAttribute('value', quizAnswers[i]['answers'][i]);
+    //     answerText = document.createElement('p');
+    //     form.appendChild(answerText);
+    //     ratio_buttons.setAttribute('id', quizAnswers[i]['id']);
+    //     ratio_buttons.setAttribute('value', quizAnswers[i]['answers'][i]);
 
-            // }
+    // }
 
 //}
 
