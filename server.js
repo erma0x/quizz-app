@@ -4,22 +4,36 @@ var fs = require('fs');
 const port = 3000;
 const app = express();
 
-// load dataset
+// load quiz dataset
 var questions = JSON.parse(fs.readFileSync('./quizzes.json', 'utf8'));
 
 app.use(express.static('static'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// get random quiz from quizzes.json
+// get random questions from quizzes.json
 app.get("/quiz", function (req, res) {
-    let randomKey = Math.floor(Math.random() * questions.length);
-    let question = {
-        'id': questions[randomKey]['id'],
-        'answers': questions[randomKey]['answers'],
-        'question': questions[randomKey]['question']
+    let my_test = new Array(); // my test with number_of_quizzes
+    let used_ids = new Array(); // check for duplicates
+    number_of_quizzes = 3;
+    let randomKey = 0;
+    let question = {};
+
+    while (number_of_quizzes > my_test.length) {
+
+        randomKey = Math.floor(Math.random() * questions.length);
+        if (!(used_ids.includes(randomKey))) {
+            question = {
+                'id': questions[randomKey]['id'],
+                'answers': questions[randomKey]['answers'],
+                'question': questions[randomKey]['question']
+            }
+            my_test.push(question);
+            used_ids.push(randomKey);
+        }
     }
-    res.json(question);
+
+    res.json(my_test);
     return true;
 });
 
@@ -46,7 +60,6 @@ app.post('/home', (req, res) => {
     res.json(question.answers);
     return true;
 });
-
 
 app.listen(port, () => console.log('Server started at http://localhost:' + port));
 

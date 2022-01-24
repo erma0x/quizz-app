@@ -1,27 +1,61 @@
+//const express = require("express");
+
 async function updateQuiz(req, res) {
-
   const url = '/quiz'; // get random quiz data
-  const response = await fetch(url);
-  const data = await response.json();
+  let data = await fetch(url)
+    .then(res => res.json());
 
-  let htmlString = "";    // init form
-  htmlString += "<form method='post' id='form' class='mx-auto' style='width: 700px'>" + data['question'];
-  htmlString += "<br><br><button type='submit' class='btn btn-warning'> Submit </button> <br><br>";
+  let numberOfQuizzes = 3;
 
-  // compile form with radio-buttons and answers
-  for (index in data['answers']) {
-    htmlString += "<div> <input type='radio' multiple id=" + data['id'] + ":" + index + " name ='answer' value=" + (index) + " checked>  " +
-      "<label for='javascript'>" + data['answers'][index] + "  </label></div>";
+  let form = document.createElement("form");
+  document.body.appendChild(form);
+  form.setAttribute('id', 'form');
+  form.setAttribute('type', 'post');
+
+  /* ul>li> domanda{p, n_radiobutton} con ognuno una lable con la risposta
+      lablel = testo risposta 
+
+    innerHtml con append child
+    creare l'elemento
+    mettere il contenuto 
+    appenderlo  */
+
+  for (var i = 0; i < data.length; i++) {
+
+    quizQuestion = document.createElement('p'); // single quiz question paragraph
+    form.appendChild(quizQuestion);
+
+    //data[i]['question'];
+    quizAnswers = data[i]['answers'];
+
+    unorderedHTMLlist = document.createElement('ul'); //unordered list containig the answers
+    form.appendChild(unorderedHTMLlist);
+
+
+
+    for (n in quizAnswers.length) {
+      quizQuestion = document.createElement('li'); // single quiz question paragraph
+      form.appendChild(quizQuestion);
+
+      ratio_buttons = document.createElement('input'); // radio buttons answer
+      form.appendChild(ratio_buttons);
+
+      console.log(data[i]);
+      ratio_buttons.setAttribute('type', 'radio');
+      ratio_buttons.setAttribute('name', 'answer');
+      ratio_buttons.setAttribute('value', quizAnswers[n]);
+      ratio_buttons.setAttribute('id', quizAnswers[n]);
+
+      answerText = document.createElement('p');
+      form.appendChild(answerText);
+      ratio_buttons.setAttribute('id', quizAnswers[i]['id']);
+      ratio_buttons.setAttribute('value', quizAnswers[i]['answers'][i]); 
+    }
   }
-
-  htmlString += "<input type='hidden' class='positive' name='id-quiz' id='id-quiz' value= " + data['id'] + " >"
-  htmlString += "<p><br><br></p></form>";
-
-
-  document.getElementById('container').innerHTML = htmlString;
-
   form.addEventListener('submit', submitAnswer);
-  return true;
+  
+  document.getElementById('container').innerHTML = form;
+
 };
 
 
@@ -34,9 +68,7 @@ async function submitAnswer(event) {
   const url = `/check/${id_quiz}/${myanswer}`;
 
   const isCorrect = await fetch(url, { method: 'POST' })
-    .then(res => res.text())
-    //.then(isCorrect => console.log(typeof isCorrect));
-    //.then(isCorrect => console.log(isCorrect));
+    .then(res => res.text())//.then(isCorrect => console.log(typeof isCorrect));
   var htmlString = "";
   if (isCorrect == "true") {
     document.getElementById('container').innerHTML = htmlString + 'CORRECT ANSWER';
@@ -49,3 +81,4 @@ async function submitAnswer(event) {
   }
 
 };
+

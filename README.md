@@ -33,6 +33,8 @@ return true or false if the response it's correct
 
 ### To do
 
+- /quiz ritorna un numero X di domande
+
 1. da una a piu domande assieme descrizione: spawna tot domande e puoi rispondere a tutte e solo dopo guardi se sono corrette o meno, con la % di corrette su /home
 
     - cambia il pulsante per ottenere un quiz a test
@@ -54,6 +56,7 @@ return true or false if the response it's correct
 
 
 ### Done 
+- /QUIZ genera piu domande assieme sempre server side
 - aggiungi id come attributo nascosto nella form
 - togli correct come attributo nascosto nella form
 - 1 fai submit fetch id della domanda e fai /check/:id ed estrai la risposta, e pubblica con insertHTML su index.html 
@@ -82,3 +85,5 @@ return true or false if the response it's correct
 
 
 
+
+setAttribute
