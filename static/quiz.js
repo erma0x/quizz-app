@@ -32,7 +32,6 @@ async function updateQuiz(req, res) {
     form.appendChild(unorderedHTMLlist);
 
 
-
     for (n in quizAnswers.length) {
       quizQuestion = document.createElement('li'); // single quiz question paragraph
       form.appendChild(quizQuestion);
