@@ -31,31 +31,25 @@ return true or false if the response it's correct
 
 <br>
 
-### To do
+### TO DO: IN PROGRESS 🟡
+- per ogni domanda fai un contatore di tutte le risposte giuste
+- dopo submit mostra la % di risposte corrette
+- submit button
 
-- /quiz ritorna un numero X di domande
-
-1. da una a piu domande assieme descrizione: spawna tot domande e puoi rispondere a tutte e solo dopo guardi se sono corrette o meno, con la % di corrette su /home
-
-    - cambia il pulsante per ottenere un quiz a test
-        (da singolo a gruppo di domande)
-
-    - fai un tot di domande per ogni test
-
-    - per ogni domanda fai un contatore di tutte le risposte giuste
-
-    - fai random quiz, però non prendere doppioni, quindi controlla la id della domanda pescata e fai una lista di id di domande presenti 
-
-    - document.CreateElement()
-    innerHtml con append child
-    creare l'elemento
-    mettere il contenuto 
-    appenderlo
+- quando faccio update quiz deve cancellare tutto il quiz presente
 
 <br>
 
 
 ### Done 
+25 Jan
+- le domande sono mutualmente esclusive
+- crea il documento html con i seguenti metodi: document.CreateElement(), innerHtml, appendChild, invece di comporre la string htmlString
+- fai random quiz, però non prendere doppioni, quindi controlla la id della domanda pescata e fai una lista di id di domande presenti 
+- fai un tot di domande per ogni test
+
+- cambia il pulsante per ottenere un quiz a test (da singolo a gruppo di domande)
+- /quiz ritorna un numero X di domande
 - /QUIZ genera piu domande assieme sempre server side
 - aggiungi id come attributo nascosto nella form
 - togli correct come attributo nascosto nella form

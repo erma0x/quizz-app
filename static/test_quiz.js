@@ -44,15 +44,14 @@ let questions = [
         "correct": 0
     }]
 
+const number_of_quizzes = 3;
 
-/// CREATE A FORM 
+let my_test = new Array(); 
+let used_ids = new Array(); 
 
-let my_test = new Array(); // my test with number_of_quizzes
-let used_ids = new Array(); // check for duplicates
-number_of_quizzes = 3;
 let randomKey = 0;
 let question = {};
-//let htmlString = "<html><head></head><body>"; //ul>li> domanda{p, n_radiobutton}
+
 
 let form = document.createElement("form");
 document.body.appendChild(form);
@@ -69,79 +68,35 @@ while (number_of_quizzes > my_test.length) {
             'answers': questions[randomKey]['answers'],
             'question': questions[randomKey]['question']
         }
-
         my_test.push(question);
         used_ids.push(randomKey);
         console.log(question['question']);
 
-//////////
         ul = document.createElement('ul'); // single quiz question paragraph
         form.appendChild(ul);
-  
+
         paragraph = document.createElement('p'); // single quiz question paragraph
-        paragraph.textContent = question['question'] ;
+        paragraph.textContent = question['question'];
         ul.appendChild(paragraph);
 
-//////////
-
-        //htmlString += '<li>' + question['question'] +"<br>"
         for (answer_number in question['answers']) {
-
-            console.log(question['answers'][answer_number]);
-
             spaced = document.createElement('br'); // single quiz question paragraph
             ul.appendChild(spaced);
-    
-            //li = document.createElement('li'); //unordered list containig the answers
-            //ul.appendChild(li);
-    
             radio = document.createElement('input'); //unordered list containig the answers
-            radio.setAttribute('type','radio');
-            //radio.setAttribute('type','radio');
-
-            //label radio button
+            radio.setAttribute('type', 'radio');
+            //radio.setAttribute('checked','radio');
             label_radio = document.createElement('label');
             label_radio.textContent = question['answers'][answer_number];
 
             ul.appendChild(radio);
             ul.appendChild(label_radio);
 
-            //htmlString += "<input type='radio'>"
-            //htmlString += "<label>"+ question['answers'][answer_number]+"</label>" +"<br>"
-
         }
     }
     document.body.appendChild(form);
-    //htmlString += '</body>'
 }
 
-
 //console.log(randomKey)
-
-// for (n in ) {
-
-//     quizQuestion = document.createElement('li'); // single quiz question paragraph
-//     form.appendChild(quizQuestion);
-
-//     ratio_buttons = document.createElement('input'); // radio buttons answer
-//     form.appendChild(ratio_buttons);
-
-//     console.log(data[i]);
-//     ratio_buttons.setAttribute('type', 'radio');
-//     ratio_buttons.setAttribute('name', 'answer');
-//     ratio_buttons.setAttribute('value', quizAnswers[n]);
-//     ratio_buttons.setAttribute('id', quizAnswers[n]);
-
-//     answerText = document.createElement('p');
-//     form.appendChild(answerText);
-//     ratio_buttons.setAttribute('id', quizAnswers[i]['id']);
-//     ratio_buttons.setAttribute('value', quizAnswers[i]['answers'][i]);
-
-// }
-
-//}
-
-
 //console.log(htmlString)
 //console.log(my_test)
 //console.log(used_ids);
