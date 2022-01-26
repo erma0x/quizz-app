@@ -1,6 +1,6 @@
 async function updateQuiz(req, res) {
-  
-  if (document.getElementById('form')){
+
+  if (document.getElementById('form')) {
     document.getElementById('form').remove();
   }
 
@@ -63,51 +63,46 @@ async function updateQuiz(req, res) {
   }
 
   document.addEventListener('submit', submitAnswer);
-  
+
 };
 
 
 async function submitAnswer(event) {
   // event.preventDefault();
-
   // storage id_domanda : numero risposta
-
-
 
   let myForm = document.getElementById('form');
   let formData = new FormData(myForm);
 
-  let my_test = Array.from(formData.keys()); //      !!!  devo ottenere il JSON my_test dal form
+  let myTestIDs = Array.from(formData.keys()); //      !!!  devo ottenere il JSON my_test dal form
+  let myTestAnswers = Array.from(formData.values()); //      !!!  devo ottenere il JSON my_test dal form
 
+  let myTest = {};
 
+  //console.log(myTestIDs, myTestAnswers);
 
+  for (let i = 0; i < myTestIDs.length; i++) { // COMPOSE /check JSON
+    let myAnswerID = myTestIDs[i];
+    let myAnswerIndex = myTestAnswers[i];
 
-  console.log('****************************');
-  console.log(my_test); //.get('0')
-  //
-
-
-  for (let i = 0; i < my_test.length; i++) { // check for each question
-
-    let myanswer = formData.get(my_test[i]['answer']);
-    console.log(myanswer)
-
-    const url = `/check/${id_quiz}/${myanswer}`;
-
-    const isCorrect = await fetch(url, { method: 'POST' })
-      .then(res => res.text()).then(isCorrect => console.log(isCorrect));
-
-    // contatore risposte giuste
-
-    if (isCorrect == "true") {
-      document.getElementById('container').innerHTML = 'CORRECT ANSWER';
-      return true;
-
-    }
-    else {
-      document.getElementById('container').innerHTML = 'WRONG ANSWER';
-      return true;
-    }
+    myTest[myAnswerID] = myAnswerIndex;
   }
+
+  // send myTest to /checkbox
+  const xhr = new XMLHttpRequest();
+  const url = 'https://checkbox/';
+  xhr.open('POST',url);
+  
+  // xhr.onload = () => {
+  //   const data = xhr.response;
+  //   console.log(data);}
+  
+  //xhr.send(); 
+
+  // retrive test correctness
+  //const RESULT = await fetch(url, { method: 'POST' })
+
+  document.getElementById('container').innerHTML = 'Correct Answers '+xhr.responseText;
 };
+
 

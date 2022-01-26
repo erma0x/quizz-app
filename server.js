@@ -37,21 +37,43 @@ app.get("/quiz", function (req, res) {
     return true;
 });
 
+// OLD
+// app.post('/check/:id/:answer', function (req, res) {
+//     let my_id = req.params.id
+//     let my_answer = req.params.answer
+//     let correct_answer = questions[my_id]['correct']
+//     //console.log(my_answer,correct_answer)
+//     if (correct_answer == my_answer) {
+//         res.json(true);
+//     }
+//     else {
+//         res.json(false)
+//     }
+// });
+
 
 // INPUT /check/request.json
 // OUTPUT return % correct ?
-app.post('/check/:id/:answer', function (req, res) {
-    let my_id = req.params.id
-    let my_answer = req.params.answer
-    let correct_answer = questions[my_id]['correct']
-    //console.log(my_answer,correct_answer)
-    if (correct_answer == my_answer) {
-        res.json(true);
+app.get('/checkbox', function (req, res) {
+    console.log('answer status code: ' + req.statusCode);
+    console.log('answer elements: ' + req.body);
+
+    let myTest = req.body;
+    let correctAnswers = 0;
+
+    for (let j = 0; j < myTest.length; j++) {
+        let id_quiz = i;
+        let index_answer = myTest[i];
+        if (questions[id_quiz]['correct'] == index_answer) {
+            correctAnswers = correctAnswers + 1;
+        }
     }
-    else {
-        res.json(false)
-    }
-});
+    res.send(correctAnswers)
+})
+
+app.post('/checkbox', function (req, res) {
+    console.log("POSTING CHECK ANSWER: ", req.body)
+})
 
 app.get("/home", function (req, res) {
     return res.sendFile(__dirname + '/index.html');
@@ -59,12 +81,9 @@ app.get("/home", function (req, res) {
 
 app.post('/home', (req, res) => {
     const question = req.body;
-    //console.log(req.body);
+    console.log('Delivered request: ', req.body);
     res.json(question.answers);
     return true;
 });
 
-app.listen(port, () => console.log('Server started at http://localhost:' + port));
-
-
-
+app.listen(port, () => console.log('Server started at http://localhost:' + port + '/home'));

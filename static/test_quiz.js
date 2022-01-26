@@ -46,8 +46,8 @@ let questions = [
 
 const number_of_quizzes = 3;
 
-let my_test = new Array(); 
-let used_ids = new Array(); 
+let my_test = new Array();
+let used_ids = new Array();
 
 let randomKey = 0;
 let question = {};

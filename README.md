@@ -34,25 +34,17 @@ return true or false if the response it's correct
 ## Note
 ### Domande:
 
-- devo resettare il documento ogni nuovo quiz, prima quando facevo submit mandavo document.innerHTML e lo assegnavo 
-a se la risposta e' corretta o no. Adesso dovrei rigenerare i quiz indipendentemente
-// document.getElementById("form").reset(); // reset form content
-// document.getElementById('form').innerHTML = '';
-
-// form.remove();
-
 
 ### IN PROGRESS 🟡
-- RESET del form:  quando faccio update quiz deve cancellare tutto il quiz presente
-- test per il CHECK delle domande
+- /checkbox/test.json 
 - per ogni domanda fai un contatore di tutte le risposte giuste
 - dopo submit mostra la % di risposte corrette
 
 <br>
 
-
 ### DONE
-
+- componi il JSON test per ogni quiz a cui fai submit
+- RESET del form:  quando faccio update quiz deve cancellare tutto il quiz presente
 - submit button
 - le domande sono mutualmente esclusive
 - crea il documento html con i seguenti metodi: document.CreateElement(), innerHtml, appendChild, invece di comporre la string htmlString
