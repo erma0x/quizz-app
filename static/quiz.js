@@ -1,4 +1,8 @@
 async function updateQuiz(req, res) {
+  
+  if (document.getElementById('form')){
+    document.getElementById('form').remove();
+  }
 
   const url = '/quiz'; // get random quiz data
   let questions = await fetch(url)
@@ -45,8 +49,7 @@ async function updateQuiz(req, res) {
         radio = document.createElement('input'); //unordered list containig the answers
         radio.setAttribute('type', 'radio');
         radio.setAttribute('name', question['id']);
-        radio.setAttribute('value', question['question'][answer_number]);
-        radio.setAttribute('id', question['id'] + ':' + answer_number);
+        radio.setAttribute('value', answer_number);
 
         label_radio = document.createElement('label');
         label_radio.textContent = question['answers'][answer_number];
@@ -60,29 +63,51 @@ async function updateQuiz(req, res) {
   }
 
   document.addEventListener('submit', submitAnswer);
+  
 };
 
 
 async function submitAnswer(event) {
   // event.preventDefault();
+
+  // storage id_domanda : numero risposta
+
+
+
   let myForm = document.getElementById('form');
   let formData = new FormData(myForm);
-  const myanswer = formData.get('answer');
-  const id_quiz = formData.get('id-quiz');
-  const url = `/check/${id_quiz}/${myanswer}`;
-  //  document.getElementById("form").reset(); // reset form content
 
-  const isCorrect = await fetch(url, { method: 'POST' })
-    .then(res => res.text()).then(isCorrect => console.log(typeof isCorrect));
-  if (isCorrect == "true") {
-    document.getElementById('container').innerHTML = 'CORRECT ANSWER';
-    return true;
+  let my_test = Array.from(formData.keys()); //      !!!  devo ottenere il JSON my_test dal form
 
+
+
+
+  console.log('****************************');
+  console.log(my_test); //.get('0')
+  //
+
+
+  for (let i = 0; i < my_test.length; i++) { // check for each question
+
+    let myanswer = formData.get(my_test[i]['answer']);
+    console.log(myanswer)
+
+    const url = `/check/${id_quiz}/${myanswer}`;
+
+    const isCorrect = await fetch(url, { method: 'POST' })
+      .then(res => res.text()).then(isCorrect => console.log(isCorrect));
+
+    // contatore risposte giuste
+
+    if (isCorrect == "true") {
+      document.getElementById('container').innerHTML = 'CORRECT ANSWER';
+      return true;
+
+    }
+    else {
+      document.getElementById('container').innerHTML = 'WRONG ANSWER';
+      return true;
+    }
   }
-  else {
-    document.getElementById('container').innerHTML = 'WRONG ANSWER';
-    return true;
-  }
-
 };
 

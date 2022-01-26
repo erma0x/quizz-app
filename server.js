@@ -37,6 +37,9 @@ app.get("/quiz", function (req, res) {
     return true;
 });
 
+
+// INPUT /check/request.json
+// OUTPUT return % correct ?
 app.post('/check/:id/:answer', function (req, res) {
     let my_id = req.params.id
     let my_answer = req.params.answer
