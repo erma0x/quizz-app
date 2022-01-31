@@ -44,7 +44,7 @@ let questions = [
         "correct": 0
     }]
 
-const number_of_quizzes = 3;
+const quizNumber = 3;
 
 let my_test = new Array();
 let used_ids = new Array();
@@ -58,7 +58,7 @@ document.body.appendChild(form);
 form.setAttribute('id', 'form');
 form.setAttribute('type', 'post');
 
-while (number_of_quizzes > my_test.length) {
+while (quizNumber > my_test.length) {
 
     randomKey = Math.floor(Math.random() * questions.length);
 

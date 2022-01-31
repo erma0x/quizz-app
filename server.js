@@ -1,4 +1,3 @@
-
 const express = require('express');
 var fs = require('fs');
 const port = 3000;
@@ -13,13 +12,15 @@ app.use(express.json());
 
 // get random questions from quizzes.json
 app.get("/quiz", function (req, res) {
-    let my_test = new Array(); // my test with number_of_quizzes
+    let my_test = new Array(); // my test with quizNumber
     let used_ids = new Array(); // check for duplicates
-    number_of_quizzes = 3;
+    
+    let quizNumber = 3;
+    
     let randomKey = 0;
     let question = {};
 
-    while (number_of_quizzes > my_test.length) {
+    while (quizNumber > my_test.length) {
 
         randomKey = Math.floor(Math.random() * questions.length);
         if (!(used_ids.includes(randomKey))) {
@@ -36,6 +37,7 @@ app.get("/quiz", function (req, res) {
     res.json(my_test);
     return true;
 });
+
 
 // OLD
 // app.post('/check/:id/:answer', function (req, res) {
@@ -57,23 +59,38 @@ app.get("/quiz", function (req, res) {
 app.get('/checkbox', function (req, res) {
     console.log('answer status code: ' + req.statusCode);
     console.log('answer elements: ' + req.body);
+    res.send(correctAnswers);
+    return true;
 
-    let myTest = req.body;
-    let correctAnswers = 0;
-
-    for (let j = 0; j < myTest.length; j++) {
-        let id_quiz = i;
-        let index_answer = myTest[i];
-        if (questions[id_quiz]['correct'] == index_answer) {
-            correctAnswers = correctAnswers + 1;
-        }
-    }
-    res.send(correctAnswers)
 })
 
 app.post('/checkbox', function (req, res) {
-    console.log("POSTING CHECK ANSWER: ", req.body)
+    
+    //let myTest = JSON.stringify(req.body);
+    let myTest = req.body;
+
+    console.log("SERVER post on /checkbox the following object: ",myTest)
+
+    let correctAnswers = 0;
+
+    for (j in myTest) {
+        console.log(j,myTest[j] )
+        let id_quiz = j;
+        let index_answer = myTest[j];
+        if (questions[id_quiz]['correct'] == index_answer) {
+             correctAnswers = correctAnswers + 1;
+        }
+    }
+    console.log('SERVER correct answers ',correctAnswers);
+
+    /////////////////////////////////////////////////////
+    //let scoreQuiz = correctAnswers/quizNumber; 
+    res.json(correctAnswers);
+    return true;
+
 })
+
+
 
 app.get("/home", function (req, res) {
     return res.sendFile(__dirname + '/index.html');
@@ -86,4 +103,4 @@ app.post('/home', (req, res) => {
     return true;
 });
 
-app.listen(port, () => console.log('Server started at http://localhost:' + port + '/home'));
+app.listen(port, () => console.log('SERVER started at http://localhost:' + port + '/home'));

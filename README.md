@@ -26,8 +26,8 @@ localhost:3000/home my app rendering index.html
 #### 🟢 **/quiz**
 get random quiz as json obj
 
-#### 🟢 **/check/:id/:myanswer**
-return true or false if the response it's correct
+#### 🟢 **/checkbox/myanswers.json**
+return the number correct answers
 
 <br>
 
@@ -35,14 +35,30 @@ return true or false if the response it's correct
 ### Domande:
 
 
+
 ### IN PROGRESS 🟡
-- /checkbox/test.json 
-- per ogni domanda fai un contatore di tutte le risposte giuste
+
+- quando fa la submit tutte le domande devono essere risposte 
+ input required sul form per dirgli di rispondere a tutte
+
 - dopo submit mostra la % di risposte corrette
+- elimina quizNumber dal client
+
+
+- required
+- elimina dal client logica
+- modulo richieste
+- modulo principale
+- modulo update
 
 <br>
 
 ### DONE
+- controlla ultima parte di quiz.js per /checkbox/test.json 
+- rimuovi il form prima di visualizzare il numero di risposte sbagliate
+- usa fetch invece di XML
+
+- per ogni domanda fai un contatore di tutte le risposte giuste
 - componi il JSON test per ogni quiz a cui fai submit
 - RESET del form:  quando faccio update quiz deve cancellare tutto il quiz presente
 - submit button

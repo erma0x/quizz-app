@@ -1,14 +1,34 @@
+// get random quiz
 async function updateQuiz(req, res) {
+  const url = '/quiz';
+  let questions = await fetch(url).then(res => res.json());
+  return questions
+}
+
+/////////////////////////////////////////////////////////////////
+
+while (quizNumber > my_test.length) {            //////////////// ELIMINA QUIZ NUMBER
+
+  randomKey = Math.floor(Math.random() * questions.length);
+  if (!(used_ids.includes(randomKey))) {
+    question = {
+      'id': questions[randomKey]['id'],
+      'answers': questions[randomKey]['answers'],
+      'question': questions[randomKey]['question']
+    }
+    my_test.push(question);
+    used_ids.push(randomKey);
+
+/////////////////////////////////////////////////////////////////
+
+async function updateQuiz(req, res) {
+  let quizNumber = 2;
+
+  document.getElementById('container').innerHTML = '';
 
   if (document.getElementById('form')) {
     document.getElementById('form').remove();
   }
-
-  const url = '/quiz'; // get random quiz data
-  let questions = await fetch(url)
-    .then(res => res.json());
-
-  const number_of_quizzes = 3;
 
   let my_test = new Array();
   let used_ids = new Array();
@@ -22,87 +42,87 @@ async function updateQuiz(req, res) {
   form.setAttribute('type', 'post');
   form.setAttribute('style', 'text-align:center;');
 
-  while (number_of_quizzes > my_test.length) {
+  let container = document.createElement("container");
+  document.body.appendChild(container);
 
-    randomKey = Math.floor(Math.random() * questions.length);
-    if (!(used_ids.includes(randomKey))) {
-      question = {
-        'id': questions[randomKey]['id'],
-        'answers': questions[randomKey]['answers'],
-        'question': questions[randomKey]['question']
-      }
-      my_test.push(question);
-      used_ids.push(randomKey);
+  ul = document.createElement('ul'); // single quiz question paragraph
+  form.appendChild(ul);
 
-      ul = document.createElement('ul'); // single quiz question paragraph
-      form.appendChild(ul);
+  paragraph = document.createElement('p'); // single quiz question paragraph
+  paragraph.textContent = question['question'];
+  ul.appendChild(paragraph);
 
-      paragraph = document.createElement('p'); // single quiz question paragraph
-      paragraph.textContent = question['question'];
-      ul.appendChild(paragraph);
+  for (answer_number in question['answers']) {
 
-      for (answer_number in question['answers']) {
+    spaced = document.createElement('br'); // single quiz question paragraph
+    ul.appendChild(spaced);
 
-        spaced = document.createElement('br'); // single quiz question paragraph
-        ul.appendChild(spaced);
+    radio = document.createElement('input'); //unordered list containig the answers
+    radio.setAttribute('type', 'radio');
+    radio.setAttribute('name', question['id']);
+    radio.setAttribute('value', answer_number);
+    radio.setAttribute('required', 'required');
+    
+    //radio.required = true; /// REQUIRED ALL ANSWERS
+    //document.getElementById("input").required = true; 
 
-        radio = document.createElement('input'); //unordered list containig the answers
-        radio.setAttribute('type', 'radio');
-        radio.setAttribute('name', question['id']);
-        radio.setAttribute('value', answer_number);
+    label_radio = document.createElement('label');
+    label_radio.textContent = question['answers'][answer_number];
 
-        label_radio = document.createElement('label');
-        label_radio.textContent = question['answers'][answer_number];
+    ul.appendChild(radio);
+    ul.appendChild(label_radio);
 
-        ul.appendChild(radio);
-        ul.appendChild(label_radio);
-
-      }
-    }
-    document.body.appendChild(form);
   }
-
-  document.addEventListener('submit', submitAnswer);
-
+document.body.appendChild(form);
+document.addEventListener('submit', submitAnswer);
+//if (
+  document.getElementById("IDs").checked
+  ; ///////////
 };
 
+
+
+
+
+async function getNumberCorrectAnswers(myTestJSON) {
+
+  let url_check = '/checkbox/';
+  console.log(`CLIENT sending to ${url_check} the following quiz object: `, myTestJSON)
+
+  let response_numberCorrectAnswers = await fetch(url_check, {
+    method: "POST",
+    body: JSON.stringify(myTestJSON), headers: { "content-type": 'application/json' }
+  })
+
+  let numberCorrectAnswers = await response.json();
+  return numberCorrectAnswers;
+};
 
 async function submitAnswer(event) {
-  // event.preventDefault();
-  // storage id_domanda : numero risposta
 
-  let myForm = document.getElementById('form');
-  let formData = new FormData(myForm);
+  // let my_test = await getFormData() //.then(res => res.json());
+  // let numberCorrectAnswers = await response_my_test.json();
+  // let response_numberCorrectAnswers = await getNumberCorrectAnswers(my_test);
+  // let numberCorrectAnswers = await response_numberCorrectAnswers.json
 
-  let myTestIDs = Array.from(formData.keys()); //      !!!  devo ottenere il JSON my_test dal form
-  let myTestAnswers = Array.from(formData.values()); //      !!!  devo ottenere il JSON my_test dal form
+  let my_test = getFormData();
+  console.log('MY FORM ', my_test);
 
-  let myTest = {};
+  let numberCorrectAnswers = await getNumberCorrectAnswers(my_test);
 
-  //console.log(myTestIDs, myTestAnswers);
 
-  for (let i = 0; i < myTestIDs.length; i++) { // COMPOSE /check JSON
-    let myAnswerID = myTestIDs[i];
-    let myAnswerIndex = myTestAnswers[i];
+  //let my_test = JSON.stringify(my_test);
+  console.log('CLIENT number correct answer type', typeof (numberCorrectAnswers));
+  //.then(data => console.log('getting data from server ', data));
+  console.log('CLIENT recived number correct answers  ' + numberCorrectAnswers)
+  //console.log('CLIENT number correct answers  '+ numberCorrectAnswers+ +'  type '+typeof(numberCorrectAnswers));
 
-    myTest[myAnswerID] = myAnswerIndex;
-  }
+  document.getElementById('form').remove();
+  document.getElementById('container').innerHTML = 'correct answers : ' + numberCorrectAnswers;
 
-  // send myTest to /checkbox
-  const xhr = new XMLHttpRequest();
-  const url = 'https://checkbox/';
-  xhr.open('POST',url);
-  
-  // xhr.onload = () => {
-  //   const data = xhr.response;
-  //   console.log(data);}
-  
-  //xhr.send(); 
+  let numberRespondAnswers = await my_test.length;
 
-  // retrive test correctness
-  //const RESULT = await fetch(url, { method: 'POST' })
+  document.getElementById('container').innerHTML += '<br>response number: ' + numberRespondAnswers;
 
-  document.getElementById('container').innerHTML = 'Correct Answers '+xhr.responseText;
+  //event.preventDefault();
 };
-
-
