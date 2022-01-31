@@ -31,29 +31,30 @@ return the number correct answers
 
 <br>
 
-## Note
 ### Domande:
 
-
-
 ### IN PROGRESS 🟡
+
+
+
+- dopo submit mostra la % di risposte corrette
+
+- modulo principale
 
 - quando fa la submit tutte le domande devono essere risposte 
  input required sul form per dirgli di rispondere a tutte
 
-- dopo submit mostra la % di risposte corrette
-- elimina quizNumber dal client
 
-
-- required
-- elimina dal client logica
-- modulo richieste
-- modulo principale
-- modulo update
 
 <br>
 
 ### DONE
+- modulo update DOM
+- modulo richieste
+- required nel radio
+- elimina quizNumber dal client
+- elimina dal client logica
+
 - controlla ultima parte di quiz.js per /checkbox/test.json 
 - rimuovi il form prima di visualizzare il numero di risposte sbagliate
 - usa fetch invece di XML

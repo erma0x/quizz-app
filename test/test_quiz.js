@@ -95,30 +95,3 @@ while (quizNumber > my_test.length) {
     }
     document.body.appendChild(form);
 }
-
-//console.log(randomKey)
-//console.log(htmlString)
-//console.log(my_test)
-//console.log(used_ids);
-//console.log(my_test[0])
-
-
-
-
-
-
-// EXPRESS
-// const express = require('express');
-// const path = require('path')
-// const app = express();
-// const port = 3000;
-
-// app.get('/', function (req, res) {
-//     res.send(htmlString);
-
-// })
-
-
-// app.listen(port, () => {
-//     console.log(`🟢 Server Test live at  http://localhost:${port}`)
-// })
