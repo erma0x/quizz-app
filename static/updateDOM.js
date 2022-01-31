@@ -1,6 +1,6 @@
 async function updateQuiz(req, res) {
-
-  myTest = await getRandomTest('/quiz')
+  myTest = await getRandomTest('/quiz');
+   
   document.getElementById('container').innerHTML = '';
 
   if (document.getElementById('form')) {
@@ -34,7 +34,7 @@ async function updateQuiz(req, res) {
     radio.setAttribute('type', 'radio');
     radio.setAttribute('name', question['id']);
     radio.setAttribute('value', answer_number);
-    radio.setAttribute('required', 'required'); /////////////////
+    radio.setAttribute('required', 'required'); 
 
     label_radio = document.createElement('label');
     label_radio.textContent = question['answers'][answer_number];
@@ -44,15 +44,13 @@ async function updateQuiz(req, res) {
 
   }
   document.body.appendChild(form);
-  document.addEventListener('submit', submitAnswer);
-
+  document.addEventListener('submit', submitQuiz); //////////////////////////////////////////////////
 };
 
 
-
-async function submitAnswer(event) {
+async function submitQuiz(event) {
   let my_test = getFormData();
-  console.log('MY FORM ', my_test);
+  console.log(' getFormData() quiz data: ', my_test);
 
   document.getElementById('form').remove();
   document.getElementById('container').innerHTML = 'correct answers : ' + numberCorrectAnswers;
@@ -63,4 +61,4 @@ async function submitAnswer(event) {
 
 };
 
-
+module.exports = { updateQuiz , submitQuiz } ////////////////////////////////////////

@@ -3,25 +3,24 @@ var fs = require('fs');
 const port = 3000;
 const app = express();
 
+const { updateQuiz, submitQuiz } = require("./static/updateDOM")
+
 app.use(express.static('static'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// load quiz dataset
 var questions = JSON.parse(fs.readFileSync('./quizzes.json', 'utf8'));
+let numberOfQuizzes = 3;
 
-// get random questions from quizzes.json
+
 app.get("/quiz", function (req, res) {
-    let my_test = new Array(); // my test with quizNumber
-    let used_ids = new Array(); // check for duplicates
-
-    let quizNumber = 3;
-
+    // get random questions from quizzes.json with no duplicates 
+    let my_test = new Array();
+    let used_ids = new Array();
     let randomKey = 0;
+
     let question = {};
-
-    while (quizNumber > my_test.length) {
-
+    while (numberOfQuizzes > my_test.length) {
         randomKey = Math.floor(Math.random() * questions.length);
         if (!(used_ids.includes(randomKey))) {
             question = {
@@ -33,14 +32,14 @@ app.get("/quiz", function (req, res) {
             used_ids.push(randomKey);
         }
     }
-
     res.json(my_test);
     return true;
 });
 
-// [IN] /url/myTest.json
-// [OUT] number of correct answers
+
 app.get('/checkbox', function (req, res) {
+    // IN: /url/my_test.json
+    // OUT: number of correct answers
     console.log('answer status code: ' + req.statusCode);
     console.log('answer elements: ' + req.body);
     res.send(correctAnswers);
@@ -49,7 +48,8 @@ app.get('/checkbox', function (req, res) {
 })
 
 app.post('/checkbox', function (req, res) {
-
+    // check how many correct answers in the form & submit the scoreQuiz
+    
     let myTest = req.body;
     console.log("SERVER post on /checkbox the following object: ", myTest)
     let correctAnswers = 0;
@@ -61,9 +61,10 @@ app.post('/checkbox', function (req, res) {
             correctAnswers = correctAnswers + 1;
         }
     }
-    console.log('SERVER correct answers ', correctAnswers);
-    //let scoreQuiz = correctAnswers/quizNumber; 
-    res.json(correctAnswers);
+    console.log('SERVER correct answers: ', correctAnswers);
+    let scoreQuiz = correctAnswers / numberOfQuizzes;
+    console.log('SERVER score: ', scoreQuiz);
+    res.json(scoreQuiz);
     return true;
 
 })

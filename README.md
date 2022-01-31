@@ -33,6 +33,14 @@ return the number correct answers
 
 ### Domande:
 
+47 updateDOM : e' dentro update quiz, ma dove muoverlo?
+  document.addEventListener('submit', submitQuiz); 
+
+
+
+
+
+
 ### IN PROGRESS 🟡
 
 
