@@ -2,7 +2,7 @@
     {
       "id":0,
       "question": "Quanti pianeti ci sono nel sistema solare?",
-      "answers": ["7","8","9","10"],
+      "answers": ["7","9","8","10"],
       "correct": 2 
     },
     { "id":1,

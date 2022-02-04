@@ -1,11 +1,10 @@
 {
-  "name": "quiz-app-2",
+  "name": "quiz-app-v2",
   "version": "1.0.0",
-  "description": "## Install npm install -g @vue cli vue create my-project cd my-project npm run server ## Server  node + express",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +13,7 @@
     "express": "^4.17.2",
     "mathjs": "^10.0.2",
     "node-fetch": "^3.2.0",
+    "package.json": "^2.0.1",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {

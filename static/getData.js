@@ -1,16 +1,17 @@
-async function getRandomTest(url) {
+export async function getRandomTest(url) {
   let response = await fetch(url, { method: "GET" });
   let randomTest = await response.json();
   return randomTest;
 };
 
-async function getScore(url, myTest) {
+export async function getScore(url, myQuiz) {
   let response = await fetch(url, {
     method: "POST",
-    body: JSON.stringify(myTest), headers: { "content-type": 'application/json' }
-  })
-  let correctAnswers = await response.json();
-  return correctAnswers;
+    body: JSON.stringify(myQuiz),
+    headers: { "content-type": 'application/json' }
+  });
+  let quizScore = await response.json();
+  console.log('CLIENT quiz score : ',quizScore);
+  return quizScore
 };
 
-module.exports = { getRandomTest, getScore }

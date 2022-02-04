@@ -10,6 +10,13 @@ vue create my-project
 cd my-project
 npm run server
 ```
+
+
+```bash
+npm run install
+```
+
+
 ### Run server
 ```bash
 nodemon server.js
@@ -33,40 +40,53 @@ return the number correct answers
 
 ### Domande:
 
-47 updateDOM : e' dentro update quiz, ma dove muoverlo?
-  document.addEventListener('submit', submitQuiz); 
-
-
-
-
-
+togliere add event listner in main
+spostare il bottone 'submit' dentro la form 
+il bottone deve avere 'type'='submit'
 
 ### IN PROGRESS 🟡
 
 
+package.json
+  "scripts": {
+    "type" : "module",
+    "start": "nodemon server.js"
+  },
 
-- dopo submit mostra la % di risposte corrette
 
-- modulo principale
+Error: listen EADDRINUSE: address already in use :::3000
 
-- quando fa la submit tutte le domande devono essere risposte 
- input required sul form per dirgli di rispondere a tutte
+
+
+The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is a safe method, such as GET or HEAD, or when the request is conditional and uses an If-None-Match or an If-Modified-Since header. 
+
+
+
+
+
+
+
+
 
 
 
 <br>
+<br>
 
-### DONE
+### Done
+- deve esistere un file pricipale main.js con gli event listener per update e submit
+- modularita'
+- quando fa la submit tutte le domande devono essere risposte 
+ input required sul form per dirgli di rispondere a tutte
+- dopo submit mostra la % di risposte corrette
 - modulo update DOM
 - modulo richieste
 - required nel radio
 - elimina quizNumber dal client
 - elimina dal client logica
-
 - controlla ultima parte di quiz.js per /checkbox/test.json 
 - rimuovi il form prima di visualizzare il numero di risposte sbagliate
 - usa fetch invece di XML
-
 - per ogni domanda fai un contatore di tutte le risposte giuste
 - componi il JSON test per ogni quiz a cui fai submit
 - RESET del form:  quando faccio update quiz deve cancellare tutto il quiz presente
