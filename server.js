@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 var questions = JSON.parse(fs.readFileSync('./quizzes.json', 'utf8'));
-let numberOfQuizzes = 5;
+let numberOfQuizzes = 4;
 
 app.get("/quiz", function (req, res) {
     /*
@@ -44,9 +44,10 @@ app.get('/checkbox', function (req, res) {
 
 app.post('/checkbox', function (req, res) {
     /*
-    IN: /url/my_test.json
-    OUT: number of correct answers
-    description: check how many correct answers in the form & submit the scoreQuiz
+    description: check how many correct 
+    answers in the form & submit the scoreQuiz
+        IN: /url/my_test.json
+        OUT: Quiz Score
     */
     let myTest = req.body;
     console.log("SERVER post on /checkbox the following object: ", myTest)

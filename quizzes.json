@@ -1,43 +1,134 @@
   [
     {
-      "id":0,
+      "id": 0,
       "question": "Quanti pianeti ci sono nel sistema solare?",
-      "answers": ["7","9","8","10"],
-      "correct": 2 
+      "answers": [
+        "7",
+        "9",
+        "8",
+        "10"
+      ],
+      "correct": 2
     },
-    { "id":1,
+    {
+      "id": 1,
       "question": "Quanti denti ha un essere umano adulto?",
-      "answers": ["28","30","32","34"],
-      "correct": 2 
-
-      }
-    ,
-    { "id":2,
+      "answers": [
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 2,
       "question": "Quale e' il nome di un famoso esploratore?",
-      "answers": ["Vespucci","Machiavelli","Da Vinci","Galileo"],
-      "correct": 0 
-
-      }
-    ,
-    { "id":3,
+      "answers": [
+        "Vespucci",
+        "Machiavelli",
+        "Da Vinci",
+        "Galileo"
+      ],
+      "correct": 0
+    },
+    {
+      "id": 3,
       "question": "Quando e' caduta Roma in mano ai Barbari?",
-      "answers": ["214dC","612dC","22aC","492dC"],
+      "answers": [
+        "214dC",
+        "612dC",
+        "22aC",
+        "492dC"
+      ],
       "correct": 3
-
-      }
-    ,
-    { "id":4,
+    },
+    {
+      "id": 4,
       "question": "Quale fra questi e' uno strumento per programmare?",
-      "answers": ["VPN","Word","PowerPoint","HTML"],
-      "correct": 3 
-
-      }
-    ,
-    { "id":5,
+      "answers": [
+        "VPN",
+        "Word",
+        "PowerPoint",
+        "HTML"
+      ],
+      "correct": 3
+    },
+    {
+      "id": 5,
       "question": "Quanti erano i re di Roma?",
-      "answers": ["7","5","13","3"],
-      "correct": 0 
-      
+      "answers": [
+        "7",
+        "5",
+        "13",
+        "3"
+      ],
+      "correct": 0
+    },
+    {
+      "id": 6,
+      "question": "7x7 ?",
+      "answers": [
+        "47",
+        "42",
+        "49",
+        "56"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 7,
+      "question": "Quale e' il paese piu popoloso?",
+      "answers": [
+        "USA",
+        "Europa",
+        "Cina",
+        "India"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 8,
+      "question": "Quando e' iniziata la seconda guerra mondiale?",
+      "answers": [
+        "1945",
+        "1922",
+        "1939",
+        "1956"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 9,
+      "question": "Quale fra questi era uno fisico?",
+      "answers": [
+        "Shopenhouer",
+        "Hoppenheimer",
+        "Darwin",
+        "Kafka"
+      ],
+      "correct": 2
+    },
+    {
+      "id": 10,
+      "question": "Di quali colori e' la bandiera belga ?",
+      "answers": [
+        "rosso-blu-nero",
+        "giallo-rosso-nero",
+        "blu-bianco-nero",
+        "rosso-nero-bianco"
+      ],
+      "correct": 1
+    },
+    {
+      "id": 11,
+      "question": "In quale eta' e' vissuto Leonardo Da Vinci ?",
+      "answers": [
+        "classica",
+        "rinascimento",
+        "medioevo",
+        "contemporanea"
+      ],
+      "correct": 1
     }
   ]
-

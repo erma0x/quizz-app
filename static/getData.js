@@ -11,7 +11,7 @@ export async function getScore(url, myQuiz) {
     headers: { "content-type": 'application/json' }
   });
   let quizScore = await response.json();
-  console.log('CLIENT quiz score : ',quizScore);
+  console.log('CLIENT quiz score : ', quizScore);
   return quizScore
 };
 

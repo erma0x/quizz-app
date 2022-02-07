@@ -40,33 +40,12 @@ return the number correct answers
 
 ### Domande:
 
-togliere add event listner in main
-spostare il bottone 'submit' dentro la form 
-il bottone deve avere 'type'='submit'
+
 
 ### IN PROGRESS 🟡
 
 
-package.json
-  "scripts": {
-    "type" : "module",
-    "start": "nodemon server.js"
-  },
-
-
-Error: listen EADDRINUSE: address already in use :::3000
-
-
-
-The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is a safe method, such as GET or HEAD, or when the request is conditional and uses an If-None-Match or an If-Modified-Since header. 
-
-
-
-
-
-
-
-
+# Fatto
 
 
 
@@ -74,6 +53,10 @@ The HTTP 304 Not Modified client redirection response code indicates that there 
 <br>
 
 ### Done
+- togliere add event listner in main
+- spostare il bottone 'submit' dentro la form 
+- aggiungi domande
+- il bottone deve avere 'type'='submit'
 - deve esistere un file pricipale main.js con gli event listener per update e submit
 - modularita'
 - quando fa la submit tutte le domande devono essere risposte 
